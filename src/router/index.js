@@ -1,21 +1,54 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Reg from '../views/Reg.vue'
+import Vue from 'vue';
 
-Vue.use(VueRouter)
+import VueRouter from 'vue-router';
+
+import AllClazz from '../views/AllClazz.vue';
+import AllStudent from '../views/AllStudent.vue';
+import Back from '../views/Back.vue';
+import HealthMange from '../views/HealthMange.vue';
+import Login from '../views/Login.vue';
+import Reg from '../views/Reg.vue';
+
+Vue.use(VueRouter) // ss /sss
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/login'
   },
   {
     path: '/reg',
     name: 'Reg',
     component: Reg
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/back',
+    name: 'Back',
+    component: Back,
+    children:[
+      {
+        path: '/allClazz',
+        name: 'AllClazz',
+        component: AllClazz
+      },
+      {
+        path: '/healthMange',
+        name: 'HealthMange',
+        component: HealthMange
+      },
+      {
+        path: '/allStudent',
+        name: 'AllStudent',
+        component: AllStudent
+      }
+    ]
+  },
+  
   {
     path: '/about',
     name: 'About',
